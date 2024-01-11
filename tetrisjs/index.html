@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tetris JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="rivets.bundled.min.js"></script>
+    <link rel="stylesheet" href="fontawesome.css" >
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<script type="text/javascript">
+    var rando = Math.floor(Math.random() * 100000);
+    var script = document.createElement('script');
+    script.src = 'require.min.js';
+    script.setAttribute("data-main",'config.js?v=' + rando);
+    document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+<style>
+body, html {
+    height: 100%;
+}
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+</style>
+<body>
+    <div id="divMain" class="text-center" style="height: 100%;background-color:rgb(4, 10, 14);">
+        <div id="loadingDiv" class="text-center" >
+        <br><br>
+            Loading...
+        </div>
+        <div id="header" style="display:none;">
+            <h3 style="color: #724596">
+                <img src="tetris_logo.png" style="height: 96px; padding-bottom: 5px; margin-top: 1rem;">
+            </h3> 
+            <button class="btn btn-primary" style="background-color: rgb(47, 29, 112); color: rgb(119, 115, 175); border: none;" id="btnStart" onclick="myApp.btnClick()">Nowa gra</button>
+            <button class="btn btn-primary ml-2" style="background-color: rgb(47, 29, 112); color: rgb(119, 115, 175); border: none;" id="btnStart" onclick="myApp.btnPause()"
+            rv-text="data.getPauseButtonText | call data.game_mode"></button>
+            <br>
+            <div class="d-md-none">
+                <b>FPS:</b> <span rv-text="data.currentfps"></span> 
+                <b>Poziom:</b> { data.level } <b>Lines:</b> { data.lines }
+            </div>
+            <div class="d-none d-md-block">
+                <br>
+            </div>
+        </div>
+        <div id="gameArea" class="row" style="display:none;">
+            <div class="col-md-4 d-none d-md-block" style="text-align:right;">
+                <b>FPS:</b> <span rv-text="data.currentfps"></span><br>
+                <b>Poziom:</b> { data.level }<br>
+                <b>Linie:</b> { data.lines }<br>
+                <br><br><br>
+                <div style="float:right;">
+                    <table style="text-align: center;">
+                        <!-- arrow-down.svg arrow-left.svg arrow-right.svg arrow-up.svg -->
+                        <tr>
+                            <td><img src="arrow-up.svg" width="16px" alt="Arrow Up"></td>
+                            <td><div style="width:20px;"></div></td>
+                            <td>Obróć</td>
+                        </tr>
+                        <tr>
+                            <td><img src="arrow-left.svg" width="16px" alt="Arrow Left">&nbsp;<img src="arrow-down.svg" width="16px" alt="Arrow Down">&nbsp;<img src="arrow-right.svg" width="16px" alt="Arrow Right"></td>
+                            <td></td>
+                            <td>Przesuń</td>
+                        </tr>
+                        <tr>
+                            <td><b>A</b></td>
+                            <td></td>
+                            <td>Upuść</td>
+                        </tr>
+                        <tr>
+                            <td><b>P</b></td>
+                            <td></td>
+                            <td>Pauza</td>
+                        </tr>
+                        <tr>
+                            <td><b>N</b></td>
+                            <td></td>
+                            <td>Nowa gra</td>
+                        </tr>
+                    </table>
+                </div>
+                <section style="position:relative;right:20px;" rv-html="data.message"></section>
+            </div>
+            <div class="col-md-4 col-8" id="gamediv">
+            </div>
+            <div class="col-md-4 col-4" style="text-align:left;">
+                <div class="d-none d-md-block">
+                    <b>Następny klocuch</b>
+                    <br>
+                </div>
+                <br>
+                <div id="nextpiecediv">
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    
+</body>
+
+</html>
