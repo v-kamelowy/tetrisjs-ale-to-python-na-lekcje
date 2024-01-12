@@ -153,7 +153,7 @@ define(["require", "exports"], function (require, exports) {
             if (event.key == 'ArrowRight' || event.key == 'Right') {
                 app.rightKey = true;
             }
-            if (event.key == 'a' && !app.dropKey) {
+            if ((event.key == 'a' || event.key == 'A') && !app.dropKey) {
                 app.drop();
                 app.dropKey = true;
             }
@@ -161,17 +161,17 @@ define(["require", "exports"], function (require, exports) {
                 app.rotate();
                 app.upKey = true;
             }
-            if (event.key == 'p') {
+            if (event.key == 'p' || event.key == 'P') {
                 app.btnPause();
             }
-            if (event.key == 'n') {
+            if (event.key == 'n' || event.key == 'N') {
                 app.newGame_Click();
             }
         };
         MyApp.prototype.keyUp = function (event) {
             var app = window.myApp;
             // console.log(event);
-            if (event.key == 'a') {
+            if (event.key == 'a' || event.key == 'A') {
                 app.dropKey = false;
             }
             if ((event.key == 'ArrowUp' || event.key == 'Up')) {
